@@ -12,7 +12,9 @@ export const LoginScreen = () => {
           "flex flex-row items-center mx-16 justify-center border-b-4 mb-4 border-red-600",
         )}
       >
-        <Text style={tailwind("text-3xl pb-2 font-bold")}>Expo + Supabase</Text>
+        <Text style={tailwind("text-3xl pb-2 font-bold")}>
+          Expo + Supabase
+        </Text>
       </View>
       <AuthFormComponent />
     </View>

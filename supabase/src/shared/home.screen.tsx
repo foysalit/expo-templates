@@ -17,6 +17,7 @@ export const HomeScreen = () => {
       <View style={tailwind("w-2/3")}>
         <Text style={tailwind("text-3xl font-bold text-center")}>{t("home.greetings")}</Text>
         <ButtonComponent
+          testID="show-users-list-button"
           text={t("home.users.button")}
           onPress={() => navigation.navigate("UserListScreen")}
         />

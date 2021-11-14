@@ -8,6 +8,7 @@ export const AuthFieldComponent = ({
   autoCapitalize = "none",
   secureTextEntry,
   placeholder,
+  testID,
   onChange,
   value,
 }: AuthFieldProps) => {
@@ -15,6 +16,7 @@ export const AuthFieldComponent = ({
     <View style={tailwind("flex m-2 border-b border-gray-400")}>
       <TextInput
         value={value}
+        testID={testID}
         onChangeText={onChange}
         placeholder={placeholder}
         autoCapitalize={autoCapitalize}

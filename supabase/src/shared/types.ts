@@ -10,6 +10,7 @@ export type RootStackParamList = {
 
 export type ButtonComponentProps = {
   text: string;
+  testID?: string;
   isLoading?: boolean;
   onPress: () => void;
   layout?: "block" | "right";

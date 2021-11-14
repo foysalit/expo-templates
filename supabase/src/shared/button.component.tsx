@@ -30,6 +30,7 @@ const getButtonTextColor = (
 
 export const ButtonComponent = ({
   text,
+  testID,
   onPress,
   isLoading,
   layout = "block",
@@ -42,7 +43,7 @@ export const ButtonComponent = ({
     style = tailwind(`flex items-center py-3 border border-${buttonColor} mt-3 mx-2 rounded`);
 
   return (
-    <TouchableOpacity style={style} onPress={onPress}>
+    <TouchableOpacity style={style} onPress={onPress} testID={testID}>
       {isLoading ? (
         <ActivityIndicator size="small" />
       ) : (

@@ -36,12 +36,14 @@ export const AuthFormComponent = () => {
       <AuthFieldComponent
         value={email}
         onChange={setEmail}
+        testID="input-email"
         placeholder={t("auth.email.placeholder")}
       />
       <AuthFieldComponent
         secureTextEntry
         value={password}
         onChange={setPassword}
+        testID="input-password"
         placeholder={t("auth.password.placeholder")}
       />
       {formType === "signup" && (
@@ -61,6 +63,7 @@ export const AuthFormComponent = () => {
 
       <ButtonComponent
         onPress={handleLogin}
+        testID="submit-button"
         isLoading={isSubmitting}
         text={t(`auth.${formType}.button`)}
       />

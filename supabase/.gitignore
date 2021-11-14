@@ -11,5 +11,9 @@ npm-debug.*
 web-build/
 .env
 
+# For detox testing
+e2e/bin/
+artifacts
+
 # macOS
 .DS_Store
