@@ -11,6 +11,7 @@ export type UserContextType = {
 
 export type AuthFieldProps = {
   value: string;
+  testID?: string;
   placeholder?: string;
   autoCapitalize?: "none";
   secureTextEntry?: boolean;

@@ -18,6 +18,7 @@ In every template, besides a variable setup with different backend technologies,
 3. Navigation 🚏
 4. Styling 🎨
 5. Linting 💄
+6. E2E Testing ✅
 
 #### Authentication 🔐
 The template will connect to the backend and setup Sign in and Sign up forms with common user flows such as switching between forms and automatically making main content pages of the app protected behind authentication pages using react-navigation's routing technique.
@@ -34,3 +35,6 @@ All navigation and routing is done via [react-navigation](https://reactnavigatio
 
 #### Linting 💄
 Using typescript, eslint and prettier, all the templates have clean, consistent and bug-free code. The linter will run on every commit to ensure you're not committing any code with error or non linter-compliant code.
+
+#### E2E Testing ✅
+One of the most complex thing to setup around react native/expo apps is e2e tests due to tooling, outdated packages etc. The template will have out of the box setup for e2e testing with [detox](https://github.com/wix/Detox) with tests for existing features which will help you write your own tests on top of it.
