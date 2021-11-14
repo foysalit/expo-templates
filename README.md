@@ -8,6 +8,7 @@ https://user-images.githubusercontent.com/1919066/141658631-93184d55-df92-48e7-b
 
 ### Available Templates
 - [Supabase](./supabase)
+- [Meteor](./meteor)
 
 
 ### Features

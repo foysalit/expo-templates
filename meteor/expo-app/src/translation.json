@@ -1,0 +1,52 @@
+{
+  "it": {
+    "translation": {
+      "home.greetings": "Benvenuti!",
+      "home.users.button": "Visualizza tutti i utenti",
+      "auth.signin.button": "Accedi",
+      "auth.signup.button": "Crea Account",
+      "auth.email.placeholder": "Indirizzo email",
+      "auth.name.placeholder": "Nome e cognome",
+      "auth.password.placeholder": "Password",
+      "auth.confirm.password.placeholder": "Conferma Password",
+      "auth.signin.hint.button": "Non hai un account?",
+      "auth.signup.hint.button": "Hai gia un'account? Accedi",
+      "settings.name.label": "Nome",
+      "settings.name.photo": "Photo",
+      "settings.page.header": "Impostazione",
+      "settings.language.header": "Seleziona la lingua",
+      "settings.signout.header": "Esci",
+      "signout.confirm.title":  "Conferma Uscita",
+      "signout.confirm.body": "Mandiamo alla pagina di login dopo l'uscita e bisogna rientrare",
+      "signout.confirm.accept":  "Conferma",
+      "signout.confirm.reject": "Cancella",
+      "users.title": "Tutti i Utenti",
+      "users.empty": "Non ci sono nessun utente"
+    }
+  },
+  "en": {
+    "translation": {
+      "home.greetings":  "Welcome!",
+      "home.users.button": "Show all users",
+      "auth.signin.button": "Sign In",
+      "auth.signup.button": "Sign Up",
+      "auth.email.placeholder": "Email Address",
+      "auth.name.placeholder": "Full Name",
+      "auth.password.placeholder": "Password",
+      "auth.confirm.password.placeholder": "Confirm Password",
+      "auth.signin.hint.button": "Don't have an account yet? Sign Up",
+      "auth.signup.hint.button": "Already have an account? Sign In",
+      "settings.name.label": "Full Name",
+      "settings.name.photo": "Profile Photo",
+      "settings.page.header": "Settings",
+      "settings.language.header": "Select language",
+      "settings.signout.header": "Sign Out",
+      "signout.confirm.title":  "Confirm Sign Out",
+      "signout.confirm.body": "You will need to login to see your content again",
+      "signout.confirm.accept":  "Sign Out",
+      "signout.confirm.reject": "Stay Logged In",
+      "users.title": "All Users",
+      "users.empty": "No users Found"
+    }
+  }
+}
