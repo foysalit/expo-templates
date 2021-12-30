@@ -26,6 +26,8 @@ export const useCartStore = create<CartState>((set, get) => ({
         if (productIndex >= 0) {
           // eslint-disable-next-line prefer-destructuring
           category.products[productIndex] = item.products[0];
+        } else {
+          category.products.push(item.products[0]);
         }
       }
 

@@ -18,6 +18,9 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { HomeStackParamList } from "./types";
 import { CategoryWithProducts } from "../product/types";
 import { getProductListLoader, useProductListStore } from "../product/list.store";
+import { TitleComponent } from "./title.component";
+import { HeaderComponent } from "./header.component";
+import { CartIconComponent } from "../product/cart-icon.component";
 
 const boxStyle = StyleSheet.create({
   shadowContainer: {
@@ -55,7 +58,7 @@ const CategoryItem = ({
           }}
         />
         <View style={[tailwind("-mt-8 p-2"), boxStyle.imageOverlay]}>
-          <Text style={tailwind("text-gray-100 font-bold")}>
+          <Text style={tailwind("text-gray-100 font-semibold")}>
             {categoryWithProducts.products.length}
           </Text>
         </View>
@@ -94,13 +97,13 @@ const CategoryList = () => {
       )}
       keyExtractor={categoryWithProducts => `category_${categoryWithProducts.id}`}
       ListHeaderComponent={
-        <View style={tailwind("w-full px-2 py-4 flex flex-row justify-between")}>
-          <Text style={tailwind("font-bold text-xl")}>{t("category.list.header")}</Text>
-          <View style={tailwind("flex items-end")}>
+        <HeaderComponent text={t("category.list.header")}>
+          <View style={tailwind("flex items-end flex-row")}>
             {isLoading && <ActivityIndicator />}
-            <MaterialCommunityIcons name="shopping-search" size={25} />
+            <MaterialCommunityIcons name="shopping-search" size={25} style={tailwind("mr-1")} />
+            <CartIconComponent />
           </View>
-        </View>
+        </HeaderComponent>
       }
     />
   );

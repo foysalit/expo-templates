@@ -23,7 +23,11 @@
       "users.title": "Tutti i Utenti",
       "users.empty": "Non ci sono nessun utente",
       "category.list.header": "Categorie",
-      "category.products.count": "{{count, number}} Prodotti"
+      "category.products.count": "{{count, number}} Prodotti",
+      "cart.page.header": "Il tuo carrello",
+      "cart.order.button": "Ordina",
+      "cart.page.emptyTitle": "Carrello Vuoto",
+      "cart.page.emptyDescription": "Aggiungi i prodotti prima di ordinare"
     }
   },
   "en": {
@@ -50,7 +54,11 @@
       "users.title": "All Users",
       "users.empty": "No users Found",
       "category.list.header":  "Categories",
-      "category.products.count":  "{{count, number}} Products"
+      "category.products.count":  "{{count, number}} Products",
+      "cart.page.header":  "Your cart",
+      "cart.order.button":  "Order",
+      "cart.page.emptyTitle":  "Empty Cart",
+      "cart.page.emptyDescription":  "Add products to cart before ordering"
     }
   }
 }

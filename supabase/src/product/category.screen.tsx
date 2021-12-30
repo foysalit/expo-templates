@@ -7,7 +7,8 @@ import { CategoryScreenProps } from "../shared/types";
 import { ProductItemComponent } from "./item.component";
 import { useCartStore } from "./cart.store";
 import { getInCartQty } from "./helpers";
-import { TitleComponent } from "../shared/title.component";
+import { CartIconComponent } from "./cart-icon.component";
+import { HeaderComponent } from "../shared/header.component";
 
 export const CategoryScreen = ({ route }: CategoryScreenProps) => {
   const { categoryWithProducts } = route.params;
@@ -18,14 +19,19 @@ export const CategoryScreen = ({ route }: CategoryScreenProps) => {
         data={categoryWithProducts.products}
         keyExtractor={product => `product_${product.id}`}
         ListHeaderComponent={
-          <View style={tailwind("px-4 py-2")}>
-            <TitleComponent text={categoryWithProducts.title} type="section" />
+          <View style={tailwind("px-2")}>
+            <HeaderComponent text={categoryWithProducts.title}>
+              <CartIconComponent />
+            </HeaderComponent>
           </View>
         }
         renderItem={entry => (
           <ProductItemComponent
             onAddToCart={qty =>
-              add({ ...categoryWithProducts, products: [{ ...entry.item, qty }] })
+              add({
+                ...categoryWithProducts,
+                products: [{ ...entry.item, qty, total: qty * entry.item.unit_price }],
+              })
             }
             onRemoveFromCart={() => remove(entry.item.id)}
             inCartQty={getInCartQty(entry.item, items)}

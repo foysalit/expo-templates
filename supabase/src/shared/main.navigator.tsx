@@ -6,6 +6,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import { HomeScreen } from "./home.screen";
 import { SettingsScreen } from "./settings.screen";
+import { CartScreen } from "../product/cart.screen";
 import { UserListScreen } from "../user/list.screen";
 import { CategoryScreen } from "../product/category.screen";
 import { HomeStackParamList, RootStackParamList, RootTabStackParamList } from "./types";
@@ -19,6 +20,7 @@ const HomeStackScreen = () => {
     <HomeStack.Navigator screenOptions={{ headerShown: false }}>
       <HomeStack.Screen name="HomeScreen" component={HomeScreen} />
       <HomeStack.Screen name="CategoryScreen" component={CategoryScreen} />
+      <HomeStack.Screen name="CartScreen" component={CartScreen} />
     </HomeStack.Navigator>
   );
 };

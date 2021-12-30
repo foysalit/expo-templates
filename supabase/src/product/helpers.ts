@@ -9,3 +9,15 @@ export const getInCartQty = (product: Product, cartItems: CategoryWithOrderProdu
 
   return qty;
 };
+
+export const getInCartItemCount = (cartItems: CategoryWithOrderProduct[]): number => {
+  return cartItems.reduce((acc, item) => {
+    return acc + item.products.reduce((total, prod) => total + prod.qty, 0);
+  }, 0);
+};
+
+export const getInCartItemTotal = (cartItems: CategoryWithOrderProduct[]): number => {
+  return cartItems.reduce((acc, item) => {
+    return acc + item.products.reduce((total, prod) => total + prod.total, 0);
+  }, 0);
+};

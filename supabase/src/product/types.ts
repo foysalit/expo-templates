@@ -12,6 +12,7 @@ export type Product = {
 
 export type OrderProduct = Product & {
   qty: number;
+  total: number;
 };
 
 export type Category = {

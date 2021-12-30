@@ -1,3 +1,4 @@
+import React from "react";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { CategoryWithProducts } from "../product/types";
 
@@ -8,6 +9,7 @@ export type RootTabStackParamList = {
 
 export type HomeStackParamList = {
   HomeScreen: undefined;
+  CartScreen: undefined;
   CategoryScreen: { categoryWithProducts: CategoryWithProducts };
 };
 
@@ -29,4 +31,8 @@ export type ButtonComponentProps = {
 export type TitleComponentProps = {
   text: string;
   type?: "page" | "section";
+};
+
+export type HeaderComponentProps = TitleComponentProps & {
+  children?: React.ReactNode;
 };
