@@ -37,6 +37,7 @@ module.exports = {
             },
         ],
         "no-use-before-define": "off",
+        "no-param-reassign": "off",
         "@typescript-eslint/no-use-before-define": ["error"],
         "import/extensions": [
             "error",
@@ -48,7 +49,7 @@ module.exports = {
                 hook: "always",
                 navigator: "always",
                 context: "always",
-                machine: "always",
+                store: "always",
             },
         ],
         "react/prop-types": 0,

@@ -7,17 +7,28 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { HomeScreen } from "./home.screen";
 import { SettingsScreen } from "./settings.screen";
 import { UserListScreen } from "../user/list.screen";
-import { RootStackParamList, RootTabStackParamList } from "./types";
+import { CategoryScreen } from "../product/category.screen";
+import { HomeStackParamList, RootStackParamList, RootTabStackParamList } from "./types";
 
+const HomeStack = createNativeStackNavigator<HomeStackParamList>();
 const Tab = createBottomTabNavigator<RootTabStackParamList>();
 const RootStack = createNativeStackNavigator<RootStackParamList>();
+
+const HomeStackScreen = () => {
+  return (
+    <HomeStack.Navigator screenOptions={{ headerShown: false }}>
+      <HomeStack.Screen name="HomeScreen" component={HomeScreen} />
+      <HomeStack.Screen name="CategoryScreen" component={CategoryScreen} />
+    </HomeStack.Navigator>
+  );
+};
 
 export const TabStack = () => {
   return (
     <Tab.Navigator sceneContainerStyle={{ paddingTop: Constants.statusBarHeight }}>
       <Tab.Screen
         name="Home"
-        component={HomeScreen}
+        component={HomeStackScreen}
         options={{
           headerShown: false,
           tabBarShowLabel: false,

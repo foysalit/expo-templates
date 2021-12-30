@@ -21,7 +21,9 @@
       "signout.confirm.accept":  "Conferma",
       "signout.confirm.reject": "Cancella",
       "users.title": "Tutti i Utenti",
-      "users.empty": "Non ci sono nessun utente"
+      "users.empty": "Non ci sono nessun utente",
+      "category.list.header": "Categorie",
+      "category.products.count": "{{count, number}} Prodotti"
     }
   },
   "en": {
@@ -46,7 +48,9 @@
       "signout.confirm.accept":  "Sign Out",
       "signout.confirm.reject": "Stay Logged In",
       "users.title": "All Users",
-      "users.empty": "No users Found"
+      "users.empty": "No users Found",
+      "category.list.header":  "Categories",
+      "category.products.count":  "{{count, number}} Products"
     }
   }
 }
