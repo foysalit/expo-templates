@@ -1,15 +1,28 @@
 import create from "zustand";
-import { CategoryWithOrderProduct } from "./types";
+import { CategoryWithOrderProduct, PaymentIntent } from "./types";
+import { createOrder, createPaymentIntentForOrder } from "../order/data";
+import { getInCartItemTotal } from "./helpers";
+import { OrderWithItems } from "../order/types";
+import { Address } from "../address/types";
 
 export type CartState = {
+  deliveryAddress: Address | null;
   items: CategoryWithOrderProduct[];
+  paymentIntent: PaymentIntent | null;
+
   clear: () => void;
   remove: (productId: number) => void;
   add: (item: CategoryWithOrderProduct) => void;
+  setPaymentIntent: (userId: string) => void;
+  setDeliveryAddress: (deliveryAddress: Address | null) => void;
+  createOrder: (userId: string) => Promise<OrderWithItems | null>;
 };
 
 export const useCartStore = create<CartState>((set, get) => ({
   items: [],
+  paymentIntent: null,
+  deliveryAddress: null,
+
   add: item => {
     const { items } = get();
     // if no other product from this category has been placed in cart yet
@@ -62,5 +75,31 @@ export const useCartStore = create<CartState>((set, get) => ({
     // and is being removed but this feels safer somehow
     if (isRemoved) set({ items: newItems });
   },
+
   clear: () => set({ items: [] }),
+
+  setDeliveryAddress: deliveryAddress => set({ deliveryAddress }),
+
+  setPaymentIntent: async (userId: string) => {
+    const { items, paymentIntent } = get();
+    if (paymentIntent) return;
+    const total = getInCartItemTotal(items);
+    const newIntent = await createPaymentIntentForOrder(total, userId);
+    if (newIntent) set({ paymentIntent: newIntent });
+  },
+
+  createOrder: async (userId: string): Promise<OrderWithItems | null> => {
+    const { paymentIntent, items, deliveryAddress } = get();
+    if (!paymentIntent || !items.length) return null;
+    const total = getInCartItemTotal(items);
+    const orderWithItems = await createOrder({
+      total,
+      user_id: userId,
+      categoryWithProducts: items,
+      address_id: deliveryAddress?.id,
+      payment_intent_id: paymentIntent.id,
+    });
+    set({ items: [], paymentIntent: null });
+    return orderWithItems;
+  },
 }));

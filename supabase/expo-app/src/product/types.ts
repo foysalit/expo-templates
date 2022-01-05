@@ -29,3 +29,16 @@ export type CategoryWithProducts = Category & {
 export type CategoryWithOrderProduct = Category & {
   products: OrderProduct[];
 };
+
+export type PaymentIntent = {
+  client_secret: string;
+  id: string;
+};
+
+export type ProductItemComponentProps = {
+  product: Product;
+  inCartQty: number;
+  onRemoveFromCart?: () => void;
+  onAddToCart?: (qty: number) => void;
+  onPress?: (product: Product) => void;
+};

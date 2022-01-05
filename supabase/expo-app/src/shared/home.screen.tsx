@@ -1,7 +1,7 @@
 import React from "react";
 import pick from "lodash.pick";
 import tailwind from "tailwind-rn";
-import { useTranslation } from "react-i18next";
+import { TFunction, useTranslation } from "react-i18next";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import {
@@ -14,11 +14,9 @@ import {
   StyleSheet,
 } from "react-native";
 
-import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { HomeStackParamList } from "./types";
 import { CategoryWithProducts } from "../product/types";
 import { getProductListLoader, useProductListStore } from "../product/list.store";
-import { TitleComponent } from "./title.component";
 import { HeaderComponent } from "./header.component";
 import { CartIconComponent } from "../product/cart-icon.component";
 
@@ -41,8 +39,10 @@ const boxStyle = StyleSheet.create({
 const CategoryItem = ({
   categoryWithProducts,
   onPress,
+  t,
 }: {
   categoryWithProducts: CategoryWithProducts;
+  t: TFunction<"translation">;
   onPress: () => void;
 }) => {
   return (
@@ -59,7 +59,7 @@ const CategoryItem = ({
         />
         <View style={[tailwind("-mt-8 p-2"), boxStyle.imageOverlay]}>
           <Text style={tailwind("text-gray-100 font-semibold")}>
-            {categoryWithProducts.products.length}
+            {t("category.products.count", { count: categoryWithProducts.products.length })}
           </Text>
         </View>
         <Text style={tailwind("pt-2 font-bold px-2")}>{categoryWithProducts.title}</Text>
@@ -91,6 +91,7 @@ const CategoryList = () => {
       style={tailwind("w-full px-2")}
       renderItem={entry => (
         <CategoryItem
+          t={t}
           categoryWithProducts={entry.item}
           onPress={() => onCategoryPress(entry.item)}
         />
@@ -100,7 +101,6 @@ const CategoryList = () => {
         <HeaderComponent text={t("category.list.header")}>
           <View style={tailwind("flex items-end flex-row")}>
             {isLoading && <ActivityIndicator />}
-            <MaterialCommunityIcons name="shopping-search" size={25} style={tailwind("mr-1")} />
             <CartIconComponent />
           </View>
         </HeaderComponent>

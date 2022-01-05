@@ -1,20 +1,18 @@
 import React from "react";
-import tailwind, { getColor } from "tailwind-rn";
 import { Image, Text, TouchableOpacity, View } from "react-native";
-
+import tailwind, { getColor } from "tailwind-rn";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { ProductItemComponentProps } from "./types";
 import { getDisplayablePrice } from "../shared/helpers";
+import { ProductItemComponentProps } from "./types";
 
-export const ProductItemComponent = ({
+export const ProductDetailComponent = ({
   product,
-  onPress,
   inCartQty,
   onAddToCart,
   onRemoveFromCart,
 }: ProductItemComponentProps) => {
   return (
-    <TouchableOpacity style={tailwind("px-4 mb-2")} onPress={() => onPress?.(product)}>
+    <View style={tailwind("w-full")}>
       <View style={tailwind("flex flex-row")}>
         <Image source={{ uri: product.picture }} style={tailwind("w-20 h-20 rounded-lg")} />
         <View style={tailwind("flex flex-row flex-1 items-center justify-around")}>
@@ -25,24 +23,19 @@ export const ProductItemComponent = ({
             )}
             <Text style={tailwind("mt-2")}>
               {getDisplayablePrice(product.unit_price)}/{product.unit_size}
-              {!!inCartQty && ` x ${inCartQty}`}
             </Text>
-          </View>
-          <View>
-            {onAddToCart && onRemoveFromCart && (
-              <TouchableOpacity
-                onPress={() => (inCartQty > 0 ? onRemoveFromCart() : onAddToCart(inCartQty + 1))}
-              >
-                <MaterialCommunityIcons
-                  color={getColor(inCartQty > 0 ? "red-500" : "green-500")}
-                  name={inCartQty > 0 ? "cart-remove" : "cart-plus"}
-                  size={20}
-                />
-              </TouchableOpacity>
-            )}
           </View>
         </View>
       </View>
-    </TouchableOpacity>
+      <View style={tailwind("ml-24 p-4 flex flex-row justify-between items-center")}>
+        <TouchableOpacity onPress={() => onAddToCart?.(inCartQty + 1)}>
+          <MaterialCommunityIcons name="plus" size={24} />
+        </TouchableOpacity>
+        <Text style={tailwind("text-lg font-semibold")}>{inCartQty}</Text>
+        <TouchableOpacity>
+          <MaterialCommunityIcons name="minus" size={24} />
+        </TouchableOpacity>
+      </View>
+    </View>
   );
 };

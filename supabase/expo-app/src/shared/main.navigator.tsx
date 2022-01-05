@@ -9,9 +9,19 @@ import { SettingsScreen } from "./settings.screen";
 import { CartScreen } from "../product/cart.screen";
 import { UserListScreen } from "../user/list.screen";
 import { CategoryScreen } from "../product/category.screen";
-import { HomeStackParamList, RootStackParamList, RootTabStackParamList } from "./types";
+import { OrderConfirmScreen } from "../order/confirm.screen";
+import {
+  HomeStackParamList,
+  OrderStackParamList,
+  RootStackParamList,
+  RootTabStackParamList,
+} from "./types";
+import { OrderListScreen } from "../order/list.screen";
+import { OrderDetailsScreen } from "../order/details.screen";
+import { AddressEditorScreen } from "../address/editor.screen";
 
 const HomeStack = createNativeStackNavigator<HomeStackParamList>();
+const OrderStack = createNativeStackNavigator<OrderStackParamList>();
 const Tab = createBottomTabNavigator<RootTabStackParamList>();
 const RootStack = createNativeStackNavigator<RootStackParamList>();
 
@@ -21,7 +31,17 @@ const HomeStackScreen = () => {
       <HomeStack.Screen name="HomeScreen" component={HomeScreen} />
       <HomeStack.Screen name="CategoryScreen" component={CategoryScreen} />
       <HomeStack.Screen name="CartScreen" component={CartScreen} />
+      <HomeStack.Screen name="OrderConfirmScreen" component={OrderConfirmScreen} />
     </HomeStack.Navigator>
+  );
+};
+
+const OrderStackScreen = () => {
+  return (
+    <OrderStack.Navigator screenOptions={{ headerShown: false }}>
+      <OrderStack.Screen name="OrderListScreen" component={OrderListScreen} />
+      <OrderStack.Screen name="OrderDetailsScreen" component={OrderDetailsScreen} />
+    </OrderStack.Navigator>
   );
 };
 
@@ -36,6 +56,17 @@ export const TabStack = () => {
           tabBarShowLabel: false,
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="badminton" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Order"
+        component={OrderStackScreen}
+        options={{
+          headerShown: false,
+          tabBarShowLabel: false,
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name="cart" color={color} size={size} />
           ),
         }}
       />
@@ -62,6 +93,7 @@ export const MainNavigator = () => {
       </RootStack.Group>
       <RootStack.Group screenOptions={{ presentation: "modal", headerShown: false }}>
         <RootStack.Screen name="UserListScreen" component={UserListScreen} />
+        <RootStack.Screen name="AddressEditorScreen" component={AddressEditorScreen} />
       </RootStack.Group>
     </RootStack.Navigator>
   );
